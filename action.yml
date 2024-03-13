@@ -28,7 +28,7 @@ runs:
         if: "${{ inputs.snapshot-config-file }}"
         uses: MyClubHub/cumulusci-create-scratch-from-snapshot@v1
         with:
-          dev-hub-auth-url: "${{ secrets.SFDX_AUTH_URL }}"
+          dev-hub-auth-url: "${{ inputs.dev-hub-auth-url }}"
           org-name: "${{ inputs.org-name }}"
           snapshot-config-file: "${{ inputs.snapshot-config-file }}"
           org-config-file: "orgs/dev.json"
