@@ -18,10 +18,22 @@ inputs:
     description: 'Add option to use sf cli over sfdx cli'
     required: false
     default: 'False'
+  snapshot-config-file:
+    description: 'path to scratch org snapshot config'
+    required: false
 runs:
   using: "composite"
   steps:
-      - uses: MyClubHub/cumulusci-run-flow-scratch@v3
+      - name: Create Scratch Org From Snapshot
+        if: "${{ inputs.snapshot-config-file }}"
+        uses: MyClubHub/cumulusci-create-scratch-from-snapshot@v1
+        with:
+          dev-hub-auth-url: "${{ secrets.SFDX_AUTH_URL }}"
+          org-name: "${{ inputs.org-name }}"
+          snapshot-config-file: "${{ inputs.snapshot-config-file }}"
+          org-config-file: "orgs/dev.json"
+      - name: Release 2GP Beta
+        uses: MyClubHub/cumulusci-run-flow-scratch@v3
         with:
           dev-hub-auth-url: '${{ inputs.dev-hub-auth-url }}'
           org-name: '${{ inputs.org-name }}'
