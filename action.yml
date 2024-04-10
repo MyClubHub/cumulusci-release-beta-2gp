@@ -21,6 +21,10 @@ inputs:
   snapshot-config-file:
     description: 'path to scratch org snapshot config'
     required: false
+  org-config-file:
+    description: 'path to config file to overwrite'
+    required: false 
+    default: "orgs/dev.json"
 runs:
   using: "composite"
   steps:
@@ -31,7 +35,7 @@ runs:
           dev-hub-auth-url: "${{ inputs.dev-hub-auth-url }}"
           org-name: "${{ inputs.org-name }}"
           snapshot-config-file: "${{ inputs.snapshot-config-file }}"
-          org-config-file: "orgs/dev.json"
+          org-config-file: "${{ inputs.org-config-file }}"
       - name: Release 2GP Beta
         uses: MyClubHub/cumulusci-run-flow-scratch@v3
         with:
