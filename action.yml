@@ -26,7 +26,7 @@ runs:
   steps:
       - name: Create Scratch Org From Snapshot
         if: "${{ inputs.snapshot-config-file }}"
-        uses: MyClubHub/cumulusci-create-scratch-from-snapshot@v1
+        uses: MyClubHub/cumulusci-create-scratch-from-snapshot@v2
         with:
           dev-hub-auth-url: "${{ inputs.dev-hub-auth-url }}"
           org-name: "${{ inputs.org-name }}"
