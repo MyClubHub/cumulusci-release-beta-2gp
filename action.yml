@@ -26,14 +26,14 @@ runs:
   steps:
       - name: Create Scratch Org From Snapshot
         if: "${{ inputs.snapshot-config-file }}"
-        uses: MyClubHub/cumulusci-create-scratch-from-snapshot
+        uses: MyClubHub/cumulusci-create-scratch-from-snapshot@main
         with:
           dev-hub-auth-url: "${{ inputs.dev-hub-auth-url }}"
           org-name: "${{ inputs.org-name }}"
           snapshot-config-file: "${{ inputs.snapshot-config-file }}"
           org-config-file: "${{ inputs.org-config-file }}"
       - name: Release 2GP Beta
-        uses: MyClubHub/cumulusci-run-flow-scratch
+        uses: MyClubHub/cumulusci-run-flow-scratch@main
         with:
           dev-hub-auth-url: '${{ inputs.dev-hub-auth-url }}'
           org-name: '${{ inputs.org-name }}'
